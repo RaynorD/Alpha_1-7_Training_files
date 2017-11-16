@@ -1,0 +1,69 @@
+/*           INFO            */
+
+    dev                 = "Dakota.N & Raynor.D";
+    author              = "Dakota.N & Raynor.D";
+
+    onLoadName          = "A/1-7 Training Grounds";
+    onLoadMission       = "Full feature map created for Alpha Company section practices.";
+    onLoadIntro         = "A/1-7 Training Grounds (master)";
+
+	briefingName 		= "A/1-7 Training Grounds (master)";
+	overviewText 		= "Full feature map created for Alpha Company section practices.";
+	loadScreen          = "splash.jpg";
+
+/*           RULES            */
+
+    disabledAI              = true;
+    disableChannels[]       = {{0,false,true},{1,false,true},{2,true,true}};
+    forceRotorLibSimulation = 1;
+	enableDebugConsole 		= 1;
+
+/*          RESPAWN           */
+
+    respawn         = BASE;
+    respawnDelay    = 4;	
+
+/*          SYSTEMS           */
+	
+	
+
+	class Header
+	{
+		gameType = Coop;
+		minPlayers = 1;
+		maxPlayers = 86;
+	};
+	
+    #include "CfgSettings.hpp"
+    class Extended_PreInit_EventHandlers {
+        cScripts_preInit = "0 spawn compile preprocessFileLineNumbers 'cScripts\CavFnc\cScripts_preInit.sqf'";
+    };
+    class Extended_PostInit_EventHandlers {
+        cScripts_postInit = "0 spawn compile preprocessFileLineNumbers 'cScripts\CavFnc\cScripts_postInit.sqf'";
+    };
+    class CfgFunctions {
+        #include "cScripts\CavFnc\CfgFunctions.hpp"
+        #include "cScripts\Loadouts\script\CfgFunctions.hpp"
+        #include "cScripts\ViewingDistance\CfgFunctions.hpp"
+		
+		#include "RaynorsTeleporter\cfgFunctions.hpp"
+		#include "RaynorsVehicleSpawn\cfgFunctions.hpp"
+    };
+    #include "cScripts\Loadouts\script\CfgPoppy.hpp"
+    #include "cScripts\ViewingDistance\GUI.h"
+    #include "cScripts\CfgUnitInsignia.hpp"
+    #include "cScripts\CfgLoadouts.hpp"
+    #include "cScripts\CfgACESettings.hpp"
+	
+	class CfgRemoteExec
+	{        
+		class Functions
+		{
+		mode = 1;
+		jip = 1;
+
+		class RAY_VS_fnc_addeditable { allowedTargets=2; };
+		};        
+	};
+
+/*           OTHER            */
