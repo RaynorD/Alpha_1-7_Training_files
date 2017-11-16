@@ -20,8 +20,10 @@
 
 /*          RESPAWN           */
 
-    respawn         = BASE;
-    respawnDelay    = 4;	
+    respawn         		= BASE;
+    respawnDelay    		= 4;	
+	respawnOnStart			= -1;
+	respawnTemplatesWest[]	= {"MenuPosition"};
 
 /*          SYSTEMS           */
 	
