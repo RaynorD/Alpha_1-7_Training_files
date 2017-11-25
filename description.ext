@@ -5,9 +5,9 @@
 
     onLoadName          = "A/1-7 Training Grounds";
     onLoadMission       = "Full feature map created for Alpha Company section practices.";
-    onLoadIntro         = "A/1-7 Training Grounds (master)";
+    onLoadIntro         = "A/1-7 Training Grounds (v11)";
 
-	briefingName 		= "A/1-7 Training Grounds (master)";
+	briefingName 		= "A/1-7 Training Grounds (v11)";
 	overviewText 		= "Full feature map created for Alpha Company section practices.";
 	loadScreen          = "splash.jpg";
 
