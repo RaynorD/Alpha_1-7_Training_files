@@ -12,8 +12,7 @@ if(_valid) then {
 	if(_vehType != "Clear") then {
 		sleep 0.1;
 		
-		_veh = _vehType createVehicle getPos _spawnObject;
-		_veh setPosATL [getPos _veh select 0, getPos _veh select 1, 0.2];
+		_veh = createVehicle [_vehType,[getPos _spawnObject select 0, getPos _spawnObject select 1, (getPosATL _spawnObject select 2) + 0.2],[],0,"CAN_COLLIDE"];
 		_veh setDir (getDir _spawnObject);
 
 		if (_veh isKindOf "Helicopter") then
