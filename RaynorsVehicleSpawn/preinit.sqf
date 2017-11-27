@@ -10,3 +10,5 @@
  */
 
 RAY_data_vs_zeus_list = [];
+RAY_data_ramps = [];
+call compile preprocessFileLineNumbers "RaynorsVehicleSpawn\!spawnerList.sqf";
