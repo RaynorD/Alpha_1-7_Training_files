@@ -22,13 +22,13 @@ list_spawn_rotary_small_hangar = [
 	"RHS_AH64D_CS",
 	"RHS_AH64D_AA",
 	"RHS_AH64D_GS",
+	"RHS_AH64_base",
+	"RHS_AH64D",
 	"RHS_MELB_AH6M_H",
 	"RHS_MELB_AH6M_L",
 	"RHS_MELB_AH6M_M",
 	"RHS_MELB_MH6M",
-	"RHS_MELB_H6M",
-	"RHS_UH1Y_UNARMED",
-	"RHS_UH1Y"
+	"RHS_MELB_H6M"
 ];
 
 list_spawn_rotary_large_hangar = list_spawn_rotary_small_hangar + [
@@ -37,7 +37,12 @@ list_spawn_rotary_large_hangar = list_spawn_rotary_small_hangar + [
 ];
 
 list_spawn_rotary_open = list_spawn_rotary_large_hangar + [
-	"RHS_CH_47F"
+	"RHS_AH1Z_wd",
+	"RHS_CH_47F",
+	"rhsusf_CH53E_USMC",
+	"RHS_UH1Y_UNARMED",
+	"RHS_UH1Y_FFAR",
+	"RHS_UH1Y"
 ];
 
 list_spawn_fixedWing_small_hangar = [
