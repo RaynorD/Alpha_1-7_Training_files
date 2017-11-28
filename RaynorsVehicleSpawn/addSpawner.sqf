@@ -1,14 +1,13 @@
-_object = _this select 0; //object to add spawner to
-_spawnObj = _this select 1; //spawn object (game logic)
 
+params [["_object",objNull,[objNull]],["_spawnObj",objNull,[objNull]],["_vehicles","",[""]]];
 
-_vehicles = if(typeName (_this select 2) == "ARRAY") then { // if literal array of spawnable vehicles was passed, use it
-	_this select 2;
-} else { // otherwise string passed, look for list in !spawnerlist.sqf;
-	call compile preprocessFileLineNumbers "RaynorsVehicleSpawn\!spawnerList.sqf";
-	missionNamespace getVariable (_this select 2);
-};
+call compile preprocessFileLineNumbers "RaynorsVehicleSpawn\!spawnerList.sqf";
 
+if(isNil '_vehicles') exitWith {systemChat "_vehicles was empty"};
+
+_vehiclesArr = missionNamespace getVariable _vehicles;
+
+if(isNil '_vehiclesArr') exitWith {systemChat "_vehicles value was not found in spawnerList"};
 
 _object allowDamage false;
 _object enableSimulation false;
@@ -30,7 +29,7 @@ _object enableSimulation false;
 	} else {
 		_object addAction [format["<t color='%1'>%2</t>", _color, _name], "RaynorsVehicleSpawn\VehicleSpawn.sqf", [_spawnObj, _x, true]]; 
 	};
-} foreach _vehicles;
+} foreach _vehiclesArr;
 
 _object addAction [format["<t color='#ffff55'>%1</t>", "Clear Spawn Area"], "RaynorsVehicleSpawn\VehicleSpawn.sqf", [_spawnObj, "Clear", true]]; 
 
