@@ -61,10 +61,12 @@
 	{        
 		class Functions
 		{
-		mode = 1;
-		jip = 1;
+			mode = 2;
+			jip = 1;
 
-		class RAY_VS_fnc_addeditable { allowedTargets=2; };
+			class RAY_VS_fnc_addeditable {
+				allowedTargets=2; 
+			};
 		};        
 	};
 
