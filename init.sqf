@@ -1,3 +1,4 @@
+//{if(!isPlayer _x) then {deleteVehicle _x}} foreach allUnits; // DON'T RELEASE
 /*           RULES            */
     
     enableSaving [false, false];
