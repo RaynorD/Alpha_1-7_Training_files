@@ -1,13 +1,13 @@
 /*           INFO            */
 
-    dev                 = "Dakota.N & Raynor.D";
-    author              = "Dakota.N & Raynor.D";
+    dev                 = "Raynor.D";
+    author              = "Raynor.D";
 
     onLoadName          = "A/1-7 Training Grounds";
     onLoadMission       = "Full feature map created for Alpha Company section practices.";
-    onLoadIntro         = "A/1-7 Training Grounds (v11)";
+    onLoadIntro         = "A/1-7 Training Grounds (v12)";
 
-	briefingName 		= "A/1-7 Training Grounds (v11)";
+	briefingName 		= "A/1-7 Training Grounds (v12)";
 	overviewText 		= "Full feature map created for Alpha Company section practices.";
 	loadScreen          = "splash.jpg";
 
