@@ -8,7 +8,8 @@ ClearItemCargoGlobal _crate;
 ClearWeaponCargoGlobal _crate;
 ClearMagazineCargoGlobal _crate;
 
-["AmmoboxInit",[_crate,true]] spawn BIS_fnc_arsenal;
+//["AmmoboxInit",[_crate,true]] spawn BIS_fnc_arsenal;
+[_box, true] call ace_arsenal_fnc_initBox;
 
 if(isClass (configFile >> "CfgPatches" >> "acre_main")) then {
 	_crate addItemCargoGlobal ["ACRE_PRC343",30];
