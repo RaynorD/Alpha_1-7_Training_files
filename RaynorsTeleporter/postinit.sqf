@@ -12,9 +12,8 @@
 {
 	_activeObject = _x select 0;
 	{
-		_dest = _x select 0;
+		_x params ["_dest","_destName"];
 		if(_activeObject != _dest) then {
-			_destName = _x select 1;
 			_activeObject addAction [_destName, RAY_fnc_tp_run, _dest];
 		};
 	} foreach RAY_data_tp_list;

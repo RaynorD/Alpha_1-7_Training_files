@@ -19,6 +19,14 @@ list_spawn_combatVehicle = [
 	"rhsusf_m1a2sep1wd_usarmy"
 ];
 
+list_spawn_medical = [
+	"RHS_UH60M_MEV2",
+	"RHS_UH60M_MEV",
+	"rhsusf_m113_usarmy_medical",
+	"M1133_MEV_DG1_NOSLATWOOD",
+	"M1133_MEV_DG1_SLATWOOD"
+];
+
 list_spawn_rotary_small_hangar = [
 	"RHS_AH64D",
 	"RHS_AH64D_CS",
@@ -33,8 +41,7 @@ list_spawn_rotary_small_hangar = [
 ];
 
 list_spawn_rotary_large_hangar = list_spawn_rotary_small_hangar + [
-	"RHS_UH60M",
-	"RHS_UH60M_MEV2"
+	"RHS_UH60M"	
 ];
 
 list_spawn_rotary = list_spawn_rotary_large_hangar + [

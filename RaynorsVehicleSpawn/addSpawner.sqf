@@ -109,6 +109,6 @@ _object enableSimulation false;
 	};
 } foreach _vehiclesArrSorted;
 
-_object addAction [format["<t color='#ffff55'>%1</t>", "Clear Spawn Area"], "RaynorsVehicleSpawn\VehicleSpawn.sqf", [_spawnObj, "Clear", true]]; 
+_object addAction [format["<t color='#ffff55'>%1</t>", "Clear Spawn Area"], "RaynorsVehicleSpawn\VehicleSpawn.sqf", [_spawnObj, "Clear", true],10,false,false]; 
 
 
