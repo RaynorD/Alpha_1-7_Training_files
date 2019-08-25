@@ -1,59 +1,77 @@
-{if(!isPlayer _x) then {deleteVehicle _x}} foreach allUnits; // DON'T RELEASE
+/*
+ * Author: CPL.Brostrom.A
+ * This is the mission init.sqf this is run witout exceptions on mission start.
+ * Some sections in this script only run when your on a multiplayer enviroment to avoid errors and issues.
+ * Read more about Initzialisation order here: https://community.bistudio.com/wiki/Initialization_Order
+ */
 
-/*           RULES            */
-    
-    enableSaving [false, false];
-    tawvd_disablenone = true;
+#include "cScripts\script_component.hpp"
 
-    if (getNumber (missionConfigFile >> "CfgSettings" >> "aiSystemDifficulty") == 0) then {
-        {
-            _x setSkill ["aimingspeed",     0.420];
-            _x setSkill ["aimingaccuracy",  0.338];
-            _x setSkill ["aimingshake",     0.360];
-            _x setSkill ["spottime",        0.420];
-            _x setSkill ["spotdistance",    0.700];
-            _x setSkill ["commanding",      1.0];
-            _x setSkill ["general",         1.0];
-        } forEach allUnits;
+#ifdef DEBUG_MODE
+    ["init Initializing."] call FUNC(logInfo);
+    [formatText["cScripts Version %1 is running.",VERSION]] call FUNC(logInfo);
+#endif
+
+enableSaving [false, false];
+tawvd_disablenone = true;
+
+ACE_maxWeightCarry = 7500;
+ACE_maxWeightDrag = 10000;
+
+// Check if the mission is running on multiplayer.
+if (!isMultiplayer) then {
+    ["Mission is running on singelplayer enviroment."] call FUNC(logWarning);
+};
+
+// Applying AI difficultlies
+if (isMultiplayer) then {
+    switch (cScripts_Settings_setAiSystemDifficulty) do {
+        // Day
+        case (0): {
+            #ifdef DEBUG_MODE
+                ["Applying DAY AI to units."] call FUNC(logInfo);
+            #endif
+            {
+                _x setSkill ["aimingspeed",     0.420];
+                _x setSkill ["aimingaccuracy",  0.338];
+                _x setSkill ["aimingshake",     0.360];
+                _x setSkill ["spottime",        0.420];
+                _x setSkill ["spotdistance",    1.000];
+                _x setSkill ["commanding",      1.0];
+                _x setSkill ["general",         1.0];
+            } forEach allUnits;
+        };
+        // Night / Jungle
+        case (1): {
+            #ifdef DEBUG_MODE
+                ["Applying NIGHT/JUNGLE AI to units."] call FUNC(logInfo);
+            #endif
+            {
+                _x setSkill ["aimingspeed",     0.015];
+                _x setSkill ["aimingaccuracy",  0.100];
+                _x setSkill ["aimingshake",     0.280];
+                _x setSkill ["spottime",        0.015];
+                _x setSkill ["spotdistance",    0.015];
+                _x setSkill ["commanding",      0.2];
+                _x setSkill ["general",         1.0];
+            } forEach allUnits;
+        };
     };
-    if (getNumber (missionConfigFile >> "CfgSettings" >> "aiSystemDifficulty") == 1) then {
-        {
-            _x setSkill ["aimingspeed",     0.420];
-            _x setSkill ["aimingaccuracy",  0.338];
-            _x setSkill ["aimingshake",     0.360];
-            _x setSkill ["spottime",        0.420];
-            _x setSkill ["spotdistance",    1.000];
-            _x setSkill ["commanding",      1.0];
-            _x setSkill ["general",         1.0];
-        } forEach allUnits;
-    };
-    if (getNumber (missionConfigFile >> "CfgSettings" >> "aiSystemDifficulty") == 2) then {
-        { 
-            _x setSkill ["aimingspeed",     0.220]; 
-            _x setSkill ["aimingaccuracy",  0.100]; 
-            _x setSkill ["aimingshake",     0.280]; 
-            _x setSkill ["spottime",        0.320]; 
-            _x setSkill ["spotdistance",    0.500]; 
-            _x setSkill ["commanding",      1.0]; 
-            _x setSkill ["general",         1.0]; 
-        } forEach allUnits;
-    };
-    
-/*           ACE            */
+} else {
+    ["Mission is running on singelplayer enviroment AI setting is not applied."] call FUNC(logWarning);
+};
 
-    ACE_maxWeightCarry = 7500;
-    ACE_maxWeightDrag = 10000;
-    
-/*           TFAR            */
-    
-    tf_no_auto_long_range_radio                 = true;
-    TF_give_personal_radio_to_regular_soldier   = true;
-    TF_give_microdagr_to_soldier                = false;
-    TF_defaultWestPersonalRadio                 = "tf_rf7800str";
-    TF_defaultWestRiflemanRadio                 = "tf_anprc152";
-    TF_defaultWestBackpack                      = "tf_rt1523g_big_rhs";
-    
-    TF_terrain_interception_coefficient         = 7.0; //Coefficient defining the level of radio signal interruption caused by terrain.
-    
-/*           MODULES            */
+// Enable debug mode if on multiplayer.
+if (isMultiplayer) then {
+    #ifdef DEBUG_MODE
+        ["Debug mode is currently active."] call FUNC(logWarning);
+        titleText ["Warning! cScripts debug mode is active.", "PLAIN DOWN", 3];
+        logEntities;
+    #endif
+};
 
+#ifdef DEBUG_MODE
+    ["init initialization completed."] call FUNC(logInfo);
+#endif
+
+/* APPLY STUFF ONLY BELOW THIS LINE */
