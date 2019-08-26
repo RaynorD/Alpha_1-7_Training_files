@@ -12,19 +12,26 @@ _vehiclesArrSorted = [];
 
 if(typeName _vehicles == "STRING") then {
 	_vehiclesArrInput = missionNamespace getVariable _vehicles;
-	if(isNil '_vehiclesArrInput') exitWith {diag_log format ["Raynor Vehicle Spawner: _vehicles value was not found in spawnerList: %1", _vehicles]};
+	if(isNil '_vehiclesArrInput') exitWith {diag_log text format ["Raynor Vehicle Spawner: _vehicles value was not found in spawnerList: %1", _vehicles]};
 	
-	diag_log format ["Raynor's Vehicle Spawn List: %1", _vehicles];
+	diag_log text format ["Raynor's Vehicle Spawn List: %1", _vehicles];
 	
 	{
 		_config = (configFile >> "CfgVehicles" >> _x);
 		_side = (getNumber (_config >> "side"));
 		
-		(_vehiclesArr select _side) pushback [getText (_config >> "displayName"), _x];
+		if(isClass _config) then {
+			(_vehiclesArr select _side) pushback [getText (_config >> "displayName"), _x];
+		} else {
+			diag_log text "Raynor's Vehicle Spawn: Bad vehicle class requested:";
+			diag_log text format ["List: %1", _vehicles];
+			diag_log text format ["Class: %1", _x];
+		};
 	} foreach _vehiclesArrInput;
 
 } else { //typeName _vehicles == "ARRAY"
 	_filter = [ // [string - startswith filter, bool - include root]
+		["FIR_A10C", true],
 		["FIR_F16C", true],
 		["FIR_F16D", true],
 		["FIR_F15C", true],
@@ -41,11 +48,11 @@ if(typeName _vehicles == "STRING") then {
 	{
 		_config = _x;
 		_className = configName _config;
-		//diag_log format ["_className: %1",_className];
+		//diag_log text format ["_className: %1",_className];
 		_ignore = false;
 		{
 			_x params ["_filterStr","_includeRoot"];
-			//diag_log format ["_filterStr: %1",_filterStr];
+			//diag_log text format ["_filterStr: %1",_filterStr];
 			if((_className find _filterStr) == 0) then {
 				if(_includeRoot) then {
 					if(_className != _filterStr) then {
@@ -72,7 +79,7 @@ if(typeName _vehicles == "STRING") then {
 		};
 	} foreach (format ["(getNumber (_x >> 'side') in [0,1,2,3]) &&(getNumber (_x >> 'scope') >= 2) && (configName _x isKindOf '%1')", _vehicles select 0] configClasses (configFile >> "CfgVehicles"));
 
-	diag_log format ["Raynor's Vehicle Spawn List: Generated - Filter: %1 - List: %2", _vehicles, _vehiclesArr];
+	diag_log text format ["Raynor's Vehicle Spawn List: Generated - Filter: %1 - List Size: %2", _vehicles, count _vehiclesArr];
 };
 
 _east = _vehiclesArr select 0;
@@ -103,12 +110,10 @@ _object enableSimulation false;
 	};
 	
 	if(_name == "") then {
-		_object addAction [format["<t color='#777777'>%1</t>", _config], "RaynorsVehicleSpawn\VehicleSpawn.sqf", [_spawnObj, configName _config, false],10,false,false]; 
+		_object addAction [format["<t color='#777777'>%1</t>", _config], "RaynorsVehicleSpawn\VehicleSpawn.sqf", [_spawnObj, configName _config, false],10,false,false];
 	} else {
-		_object addAction [format["<t color='%1'>%2</t>", _color, _name], "RaynorsVehicleSpawn\VehicleSpawn.sqf", [_spawnObj, configName _config, true],10,false,false]; 
+		_object addAction [format["<t color='%1'>%2</t>", _color, _name], "RaynorsVehicleSpawn\VehicleSpawn.sqf", [_spawnObj, configName _config, true],10,false,false];
 	};
 } foreach _vehiclesArrSorted;
 
-_object addAction [format["<t color='#ffff55'>%1</t>", "Clear Spawn Area"], "RaynorsVehicleSpawn\VehicleSpawn.sqf", [_spawnObj, "Clear", true],10,false,false]; 
-
-
+_object addAction [format["<t color='#ffff55'>%1</t>", "Clear Spawn Area"], "RaynorsVehicleSpawn\VehicleSpawn.sqf", [_spawnObj, "Clear", true],10,false,false];
