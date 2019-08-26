@@ -1,7 +1,7 @@
 // Configurable spawn lists
 // Don't forget a comma after every item on each array, except the last one!
 
-// These will be sorted later, first by side, then by display name. Order here does not matter. 
+// These will be sorted later, first by side, then by display name. Order here does not matter.
 
 list_spawn_combatVehicle = [
 	"rhsusf_m1025_w_m2",
@@ -41,7 +41,7 @@ list_spawn_rotary_small_hangar = [
 ];
 
 list_spawn_rotary_large_hangar = list_spawn_rotary_small_hangar + [
-	"RHS_UH60M"	
+	"RHS_UH60M"
 ];
 
 list_spawn_rotary = list_spawn_rotary_large_hangar + [
@@ -54,6 +54,8 @@ list_spawn_rotary = list_spawn_rotary_large_hangar + [
 ];
 
 list_spawn_fixedWing_small_hangar = [
+	"FIR_A10A",
+	"FIR_A10C",
 	"FIR_F15C",
 	"FIR_F15D",
 	"FIR_F15E",
