@@ -13,16 +13,9 @@ if(_valid) then {
 		
 		_veh = createVehicle [_vehType,[getPosATL _spawnObject select 0, getPosATL _spawnObject select 1, ((getPosATL _spawnObject) select 2) + 0.2],[],0,"CAN_COLLIDE"];
 		_veh setDir (getDir _spawnObject);
-
-		if (_veh isKindOf "Helicopter") then
-		{
-			[_veh] call ace_fastroping_fnc_equipFRIES;
-		};
 		
 		[_veh] execVM "RaynorsVehicleSpawn\addEditable.sqf";
 	};
 } else {
 	hint "That vehicle class is invalid!";
 };
-
-
