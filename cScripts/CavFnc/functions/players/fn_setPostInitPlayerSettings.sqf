@@ -8,10 +8,12 @@
  * 1: Safe Mode <BOOL>
  * 2: Put in Earplugs <BOOL>
  * 3: Facewere blacklist <BOOL>
- * 4: Set Squad insignia <BOOL>
+ * 4: Set radio channel <BOOL>
+ * 5: Set Squad insignia <BOOL>
+ * 6: Set Team coloring at start <BOOL>
  *
  * Example:
- * ["bob",true,true,true] call cScripts_fnc_setPostInitPlayerSettings;
+ * ["bob",true,true,true,true,true,true] call cScripts_fnc_setPostInitPlayerSettings;
  */
 
 params [
@@ -20,7 +22,8 @@ params [
     ["_earPlugs", true],
     ["_facewere", true],
     ["_radio",true],
-    ["_squadInsignia",true]
+    ["_squadInsignia",true],
+    ["_squadTeamColor",true]
 ];
 
 #ifdef DEBUG_MODE
@@ -29,7 +32,7 @@ params [
 
 // Safety first
 if (_safemode) then {
-    private _weapon = currentWeapon player;
+    private _weapon = currentWeapon _player;
     private _safedWeapons = _player getVariable ['ace_safemode_safedWeapons', []];
     if !(_weapon in _safedWeapons) then { 
         [_player, currentWeapon _player, currentMuzzle _player] call ace_safemode_fnc_lockSafety;
@@ -101,33 +104,30 @@ if (EGVAR(Settings,enforceEyewereBlacklist)) then {
 // Add squad insignia
 if (EGVAR(Settings,allowInsigniaApplication)) then {
     if (_squadInsignia) then {
-        if (isNil {_player getVariable QEGVAR(Cav,Insignia)}) then {
-            if ((_player call BIS_fnc_getUnitInsignia) != "") then {
-                _insignia = _player call BIS_fnc_getUnitInsignia;
-                _player setVariable [QEGVAR(Cav,Insignia), _insignia];
-                #ifdef DEBUG_MODE
-                    [format["%1 already have a insignia; %2 saving it.", _player, _insignia]] call FUNC(logInfo);
-                #endif
-            } else {
-                private _insignia = [_player] call FUNC(getSquadInsignia);
-                if (_insignia != "") then {
-                    [_player, _insignia] call BIS_fnc_setUnitInsignia;
-                    _player setVariable [QEGVAR(Cav,Insignia), _insignia];
-                    #ifdef DEBUG_MODE
-                        [format["%1 got assigned insignia; %2 based on squad name.", _player, _insignia]] call FUNC(logInfo);
-                    #endif
-                };
-            };
-        } else {
-            private _insignia = _player getVariable QEGVAR(Cav,Insignia);
-            [_player, _insignia] call BIS_fnc_setUnitInsignia;
+        private _insignia = "";
+        if !(isNil {profileNamespace getVariable QEGVAR(Cav,Insignia)}) then {
+            _insignia = profileNamespace getVariable QEGVAR(Cav,Insignia);
             #ifdef DEBUG_MODE
                 [format["%1 got assigned insignia; %2 based on stored variable.", _player, _insignia]] call FUNC(logInfo);
             #endif
+        } else {
+            _insignia = [_player] call FUNC(getSquadInsignia);
+            #ifdef DEBUG_MODE
+                [format["%1 got assigned insignia; %2 based on squad name if any.", _player, _insignia]] call FUNC(logInfo);
+            #endif
         };
+        [_player, _insignia] call BIS_fnc_setUnitInsignia;
     };
 };
 
+// Assign team Blue or Red Based on name
+if (_squadTeamColor) then {
+    if (isNil {_player getVariable QEGVAR(Player,Team)}) then {
+        call FUNC(setTeamColor);
+    };
+};
+
+// Set radio channel
 if (EGVAR(Settings,setRadio)) then {
     if (_radio) then {
         [_player] call FUNC(setRadioChannel);
@@ -135,6 +135,11 @@ if (EGVAR(Settings,setRadio)) then {
             [format["%1 have got there radio channel schedueld to be changed in postLoadout.", _player]] call FUNC(logInfo);
         #endif
     };
+};
+
+// Handle player announcement
+if (EGVAR(Settings,setMissionType) != 3) then {
+    [_player] call FUNC(doPlayerAnnouncement);
 };
 
 #ifdef DEBUG_MODE

@@ -15,7 +15,7 @@ class cScripts {
 
         class initCuratorObjectPlaced {};
     };
-    class DiaryRecord {
+    class documents {
         file = "cScripts\cavFnc\functions\documents";
         class Doc_Info {};
         class Doc_MissionControl {};
@@ -54,9 +54,18 @@ class cScripts {
         class setPreInitPlayerSettings {};
         class setPostInitPlayerSettings {};
 
+        class getPlayerClan {};
+        class isPlayerClan {};
+
         class getPlayerRank {};
         class setPlayerRank {};
+        
+        class getPlayerRole {};
+
         class getPlayerName {};
+        
+        class setTeamColor {};
+
         class doPlayerAnnouncement {};
 
         class getRadioChannel {};
@@ -65,6 +74,7 @@ class cScripts {
         class getCompanyVariable {};
         class hasCompanyVariable {};
         
+        class getCavSquadName {};
         class getSquadInsignia {};
     };
     class systems {
@@ -83,6 +93,7 @@ class cScripts {
         class addHeal {};
         class addArsenal {};
         class addAceCategory {};
+        class addLoadoutAction {}; // Public
 
         class addGetOutHelo {};
         class doGetOutHeloLeft {};
@@ -103,10 +114,8 @@ class cScripts {
         class sim_jump {};
     };
 
-    class misc {
+    class texture {
         file = "cScripts\cavFnc\functions\texture";
-        class flag {};
-
         class setVehicleLable {};
         class createVehicleLable {};
         class getVehicleLable {};
@@ -122,7 +131,6 @@ class cScripts {
         class moduleApplyVehicleLable {};
         class moduleApplyVehicleInventory {};
 
-        class moduleApplyFlag {};
         class moduleMakeDoctor {};
         class moduleMakeEngineer {};
 

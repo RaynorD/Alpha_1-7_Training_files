@@ -28,7 +28,10 @@ if !(isNil {_player getVariable QEGVAR(Cav,Rank)}) exitWith {
     formatText["Applying rank to %1.", _player] call FUNC(logInfo);
 #endif
 
-private _getRank = [_player,'bis'] call FUNC(getPlayerRank);
+private _getRank = 'PRIVATE';
+if ([_player, MAINCLANTAG] call FUNC(isPlayerClan)) then {
+    _getRank = [_player,'bis'] call FUNC(getPlayerRank);
+};
 
 if (_getRank in ['PRIVATE','CORPORAL','SERGEANT','LIEUTENANT','CAPTAIN','MAJOR','COLONEL']) then {
     _player setRank _getRank;

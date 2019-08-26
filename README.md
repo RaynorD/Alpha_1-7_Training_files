@@ -16,14 +16,14 @@
 cScripts is an easy to use framework for the ARMA3 S3 Operations staff and other mission makers. This framework contains functions and scripts that are easy to use and implement on a new mission. All scripts and functions are adapted to 7th Cavalry mission standards.
 
 ## Minimum Requirements
-- **CBA**                                    - [Link](https://github.com/CBATeam/CBA_A3)
-- **ACE3**                                   - [Link](https://ace3mod.com/)
-- **RHSUSAF**                                - [Link](http://www.rhsmods.org/)
-- **ACRE2**                                  - [Link](https://github.com/IDI-Systems/acre2)
-- **Project OPFOR**                          - [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=735566597)
-- **cTab**                                   - [Link](https://github.com/Riouken/cTab)
-- **ACE 3 Extension (Placeables)**           - [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=866772689)
-- **Ares Mod Achilles Expansion** (OPTIONAL) - [Link](https://github.com/ArmaAchilles/AresModAchillesExpansion)
+- [**CBA**](https://github.com/CBATeam/CBA_A3)
+- [**ACE3**](https://ace3mod.com/)
+- [**7th Cavalry Community Addon**](https://github.com/7Cav/7CavAddon)
+- [**RHSUSAF**](http://www.rhsmods.org/)
+- [**ACRE2**](https://github.com/IDI-Systems/acre2)
+- [**Project OPFOR**](https://steamcommunity.com/sharedfiles/filedetails/?id=735566597)
+- [**cTab**](https://github.com/Riouken/cTab) (Requirment removed when running the public build)
+- [**Ares Mod Achilles Expansion**](https://github.com/ArmaAchilles/AresModAchillesExpansion) (OPTIONAL)
 
 *These are the minimum requirements to run the script framework due to weapons, equipment, and references being used.*
 
@@ -39,7 +39,7 @@ cScripts provides you with the basic scripts and functions for S3 Operation maki
 ### Scripts Installed
 - **CavFnc**                    -   [7th Cavalry Function Library](https://github.com/7Cav/cScripts/wiki/Features/)
 - **Loadouts/Script**           -   [Poppy (1.1.0)](https://github.com/BaerMitUmlaut/Poppy)
-- **ViewingDistance**           -   [taw_vd (v1.5)](http://www.armaholic.com/page.php?id=19751)
+- **ViewingDistance**           -   [taw_vd (v1.6)](http://www.armaholic.com/page.php?id=19751)
 
 ### AI Tweak (init.sqf)
 The AI in cScripts `init.sqf` have been changed to be more realistic and less ridiculous. The recommended default setting is the one provided, and it has been carefully tested, making it the best setting.
