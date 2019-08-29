@@ -40,6 +40,14 @@ list_spawn_rotary_small_hangar = [
 	"RHS_MELB_H6M"
 ];
 
+list_spawn_rotary_official = [
+	"Cav_Alpha_AH64D",
+	"Cav_Alpha_CH_47F",
+	"Cav_Alpha_UH60M",
+	"Cav_Alpha_UH60M2",
+	"Cav_Alpha_UH60M_MEV2"
+];
+
 list_spawn_rotary_large_hangar = list_spawn_rotary_small_hangar + [
 	"RHS_UH60M"
 ];
@@ -93,6 +101,20 @@ list_spawn_fixedWing = list_spawn_fixedWing_large_hangar + [
 	"RHS_C130J"
 ];
 
+list_spawn_fixedWing_official_small_hangar = [
+	"B_Plane_CAS_01_dynamicLoadout_F",
+	"Cav_Alpha_A10",
+	"FIR_A10C",
+	"Cav_Alpha_F16C",
+	"FIR_F16D",
+	"B_Plane_Fighter_01_F",
+	"B_Plane_Fighter_01_Stealth_F"
+];
+
+list_spawn_fixedWing_official = list_spawn_fixedWing_official_small_hangar + [
+	"Cav_Alpha_C130J"
+];
+
 list_spawn_combined_small_hangar = list_spawn_rotary_small_hangar + list_spawn_fixedWing_small_hangar;
 list_spawn_combined_large_hangar = list_spawn_rotary_large_hangar + list_spawn_fixedWing_large_hangar;
 list_spawn_combined = list_spawn_rotary + list_spawn_fixedWing;
@@ -105,16 +127,3 @@ list_spawn_carrier = [
 	"O_T_VTOL_02_infantry_dynamicLoadout_F",
 	"rhsusf_CH53E_USMC"
 ];
-
-
-
-
-
-
-
-
-
-
-
-
-
