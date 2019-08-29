@@ -31,6 +31,7 @@ if(typeName _vehicles == "STRING") then {
 
 } else { //typeName _vehicles == "ARRAY"
 	_filter = [ // [string - startswith filter, bool - include root]
+		["FIR_A10A", true],
 		["FIR_A10C", true],
 		["FIR_F16C", true],
 		["FIR_F16D", true],
