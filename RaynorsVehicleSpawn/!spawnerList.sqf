@@ -34,16 +34,22 @@ list_spawn_rotary_small_hangar = [
 	"RHS_MELB_H6M"
 ];
 
-list_spawn_rotary_official = [
-	"Cav_Alpha_AH64D",
-	"Cav_Alpha_CH_47F",
-	"Cav_Alpha_UH60M",
-	"Cav_Alpha_UH60M2",
-	"Cav_Alpha_UH60M_MEV2"
-];
-
 list_spawn_rotary_large_hangar = list_spawn_rotary_small_hangar + [
 	"RHS_UH60M"
+];
+
+list_spawn_rotary_official_small_hangar = [
+	"Cav_Alpha_AH64D",
+	"Cav_Alpha_UH60M",
+	"Cav_Alpha_UH60M2",
+	"Cav_Alpha_UH60M_MEV2",
+	"RHS_MELB_AH6M",
+	"RHS_MELB_MH6M",
+	"RHS_MELB_H6M"
+];
+
+list_spawn_rotary_official = [
+	"Cav_Alpha_CH_47F"
 ];
 
 list_spawn_rotary = list_spawn_rotary_large_hangar + [
@@ -108,6 +114,9 @@ list_spawn_fixedWing_official_small_hangar = [
 list_spawn_fixedWing_official = list_spawn_fixedWing_official_small_hangar + [
 	"Cav_Alpha_C130J"
 ];
+
+list_spawn_mixed_official_small_hangar = list_spawn_fixedWing_official_small_hangar + list_spawn_rotary_official_small_hangar;
+list_spawn_mixed_official_large_hangar = list_spawn_rotary_official + list_spawn_fixedWing_official;
 
 list_spawn_combined_small_hangar = list_spawn_rotary_small_hangar + list_spawn_fixedWing_small_hangar;
 list_spawn_combined_large_hangar = list_spawn_rotary_large_hangar + list_spawn_fixedWing_large_hangar;
