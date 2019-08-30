@@ -48,7 +48,7 @@ list_spawn_rotary_official_small_hangar = [
 	"RHS_MELB_H6M"
 ];
 
-list_spawn_rotary_official = [
+list_spawn_rotary_official = list_spawn_rotary_official_small_hangar + [
 	"Cav_Alpha_CH_47F"
 ];
 
