@@ -29,13 +29,7 @@ list_spawn_medical = [
 
 list_spawn_rotary_small_hangar = [
 	"RHS_AH64D",
-	"RHS_AH64D_CS",
-	"RHS_AH64D_AA",
-	"RHS_AH64D_GS",
-	"RHS_AH64_base",
-	"RHS_MELB_AH6M_H",
-	"RHS_MELB_AH6M_L",
-	"RHS_MELB_AH6M_M",
+	"RHS_MELB_AH6M",
 	"RHS_MELB_MH6M",
 	"RHS_MELB_H6M"
 ];
