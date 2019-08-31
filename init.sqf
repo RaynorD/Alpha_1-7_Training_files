@@ -62,3 +62,4 @@ if (isMultiplayer) then {
 #endif
 
 /* APPLY STUFF ONLY BELOW THIS LINE */
+{[_x] execVM "scripts\aircraftWarningLights.sqf"} foreach allMissionObjects "Land_LampHalogen_F";
