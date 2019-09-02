@@ -87,7 +87,13 @@ if(typeName _vehicles == "STRING") then {
 		} foreach (format ["(getNumber (_x >> 'side') in [0,1,2,3]) &&(getNumber (_x >> 'scope') >= 2) && (configName _x isKindOf '%1')", _vehicleType] configClasses (configFile >> "CfgVehicles"));
 	} forEach _vehicles;
 	
-	diag_log text format ["Raynor's Vehicle Spawn List: Generated - Filter: %1 - List Size: %2", _vehicles, count _vehiclesArr];
+	private _totalCount = 0;
+	{
+	    {
+	        _totalCount = _totalCount + 1;
+	    } forEach _x;
+	} forEach _vehiclesArr;
+	diag_log text format ["Raynor's Vehicle Spawn List: Generated - Filter: %1 - List Size: %2", _vehicles, _totalCount];
 };
 
 private _east = _vehiclesArr select 0;
