@@ -11,8 +11,9 @@ if(_valid) then {
 	if(_vehType != "Clear") then {
 		sleep 0.1;
 		
-		_veh = createVehicle [_vehType,[getPosATL _spawnObject select 0, getPosATL _spawnObject select 1, ((getPosATL _spawnObject) select 2) + 0.2],[],0,"CAN_COLLIDE"];
+		_veh = createVehicle [_vehType,[0,0,1000],[],0,"CAN_COLLIDE"];
 		_veh setDir (getDir _spawnObject);
+		_veh setPos [getPosATL _spawnObject select 0, getPosATL _spawnObject select 1, ((getPosATL _spawnObject) select 2) + 0.2];
 		
 		[_veh] execVM "RaynorsVehicleSpawn\addEditable.sqf";
 	};
