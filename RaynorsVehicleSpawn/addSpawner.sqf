@@ -1,7 +1,13 @@
 
-params [["_object",objNull,[objNull]],["_spawnObj",objNull,[objNull]],["_vehicles","",["",[]]]];
+params [["_spawnObj",objNull,[objNull]],["_vehicles","",["",[]]]];
 
-//if(_object != sign1) exitWith {};
+private ["_sign","_vehiclesArr","_vehiclesArrSorted","_east"];
+
+if (count synchronizedObjects _spawnObj < 1) exitWith {
+	diag_log text format ["Raynor Vehicle Spawner: Nothing synced with %1",_spawnObj]
+};
+
+_sign = ((synchronizedObjects _spawnObj) select 0);
 
 call compile preprocessFileLineNumbers "RaynorsVehicleSpawn\!spawnerList.sqf";
 
@@ -92,8 +98,8 @@ _vehiclesArr set [1, _east];
 	_vehiclesArrSorted = _vehiclesArrSorted + _x;
 } foreach _vehiclesArr;
 
-_object allowDamage false;
-_object enableSimulation false;
+_sign allowDamage false;
+_sign enableSimulation false;
 
 {
 	_x params ["_displayName", "_veh"];
@@ -111,10 +117,10 @@ _object enableSimulation false;
 	};
 	
 	if(_name == "") then {
-		_object addAction [format["<t color='#777777'>%1</t>", _config], "RaynorsVehicleSpawn\VehicleSpawn.sqf", [_spawnObj, configName _config, false],10,false,false];
+		_sign addAction [format["<t color='#777777'>%1</t>", _config], "RaynorsVehicleSpawn\VehicleSpawn.sqf", [_spawnObj, configName _config, false],10,false,false];
 	} else {
-		_object addAction [format["<t color='%1'>%2</t>", _color, _name], "RaynorsVehicleSpawn\VehicleSpawn.sqf", [_spawnObj, configName _config, true],10,false,false];
+		_sign addAction [format["<t color='%1'>%2</t>", _color, _name], "RaynorsVehicleSpawn\VehicleSpawn.sqf", [_spawnObj, configName _config, true],10,false,false];
 	};
 } foreach _vehiclesArrSorted;
 
-_object addAction [format["<t color='#ffff55'>%1</t>", "Clear Spawn Area"], "RaynorsVehicleSpawn\VehicleSpawn.sqf", [_spawnObj, "Clear", true],10,false,false];
+_sign addAction [format["<t color='#ffff55'>%1</t>", "Clear Spawn Area"], "RaynorsVehicleSpawn\VehicleSpawn.sqf", [_spawnObj, "Clear", true],10,false,false];
