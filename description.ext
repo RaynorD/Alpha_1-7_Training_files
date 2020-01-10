@@ -9,7 +9,7 @@
     onLoadMission       = "Full feature map created for Alpha Company section practices";
     onLoadIntro         = "A/1-7 Training Grounds";
 
-    loadScreen          = "A-10.jpg";
+    loadScreen          = "images\loadScreen_co.paa";
 
 /*=================== D O   N O T   E D I T   B E L O W   T H E S E   L I N E S====================*/
 
